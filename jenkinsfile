@@ -1,0 +1,11 @@
+node {
+	stage('SCM') {
+	git 'https://github.com/Jhima1/spring-petclinic.git'
+	}
+	stage('building package'){
+	sh 'mvn clean package'	
+	}
+	stage('artifact'){
+	archiveArtifacts 'target/*jar'	
+	}
+}
