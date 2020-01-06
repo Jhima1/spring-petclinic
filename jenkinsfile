@@ -1,9 +1,9 @@
 node {
-	stage('SCM') {
-	git branch:'dev',url:'https://github.com/Jhima1/spring-petclinic.git'
-	}
+//	stage('SCM') {
+//	git branch:'dev',url:'https://github.com/Jhima1/spring-petclinic.git'
+//	}
 	stage('building package'){
-	sh 'mvn clean package'	
+	sh 'mvn clean package -Dmaven.test.skip=true'	
 	}
 //	stage('artifact'){
 //	archive 'target/*.jar'	
