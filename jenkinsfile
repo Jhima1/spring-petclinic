@@ -1,6 +1,6 @@
 node {
 	stage('SCM') {
-	git 'https://github.com/Jhima1/spring-petclinic.git'
+	git branch:'dev',url:'https://github.com/Jhima1/spring-petclinic.git'
 	}
 	stage('building package'){
 	sh 'mvn clean package'	
