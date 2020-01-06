@@ -5,7 +5,7 @@ node {
 	stage('building package'){
 	sh 'mvn clean package'	
 	}
-	stage('artifact'){
-	archive 'target/*.jar'	
-	}
+//	stage('artifact'){
+//	archive 'target/*.jar'	
+//	}
 }
