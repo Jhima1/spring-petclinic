@@ -3,9 +3,18 @@ pipeline{
     stages {
         stage('Maven Build') {
             steps {
-                // sh 'cd /home/jnaidu023/capstone/spring-petclinic'
                 sh 'mvn clean package -Dmaven.test.skip=true'
                 }
+        }
+	stage('SonarQube analysis') {
+            environment {
+                scannerHome = tool 'sonarscanner'
+            }
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+            }
         }
         stage('Dcoker Deploy') {
             steps {
