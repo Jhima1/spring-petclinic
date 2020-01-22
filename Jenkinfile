@@ -1,5 +1,12 @@
 pipeline{
     agent any
+    environment {
+        PROJECT_ID = 'speedy-baton-262613'
+        CLUSTER_NAME = 'capstone-cluster'
+        LOCATION = 'us-central1-a'
+        CREDENTIALS_ID = 'gke-capstone'
+        NAMESPACE = 'capstone'
+    }
     stages {
 	stage ('Artifactory configuration') {
             steps {
@@ -65,6 +72,12 @@ pipeline{
                     }
                 }
                 sh "docker image prune -a -f"
+            }
+        }
+	stage('Deploy to GKE') {
+            steps{
+                sh "sed -i 's/petclinic:latest/petclinic:${env.BUILD_ID}/g' k8s-deployment.yml"
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'k8s-deployment.yml', credentialsId: env.CREDENTIALS_ID, namespace: env.NAMESPACE, verifyDeployments: true])
             }
         }
         }
