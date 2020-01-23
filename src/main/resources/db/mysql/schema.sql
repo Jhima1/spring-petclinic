@@ -5,7 +5,8 @@ ALTER DATABASE petclinic
   DEFAULT COLLATE utf8_general_ci;
 
 
-GRANT ALL ON petclinic.* TO 'root'@'34.93.152.40';
+#GRANT ALL ON petclinic.* TO 'root'@'34.93.152.40';
+GRANT ALL PRIVILEGES ON petclinic.* TO root@34.93.152.40 IDENTIFIED BY 'root';
 
 USE petclinic;
 
