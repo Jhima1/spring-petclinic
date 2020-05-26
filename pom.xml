@@ -38,6 +38,11 @@
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
     <dependency>
+      <groupId>me.n4u.sass</groupId>
+      <artifactId>sass-gems</artifactId>
+      <version>3.1.19</version>
+    </dependency>
+    <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-cache</artifactId>
     </dependency>
